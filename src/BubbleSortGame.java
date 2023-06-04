@@ -2,6 +2,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/*
+ *Bubble sort game in Java created By PedroVMB -> https://github.com/PedroVMB
+ * */
+
 public class BubbleSortGame extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel panel;
@@ -15,7 +19,7 @@ public class BubbleSortGame extends JFrame {
     }
 
     private void initialize() {
-        setTitle("Bubble Sort Game");
+        setTitle("Bubble Sort Game by PedroVMB");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 500);
         setResizable(false);
@@ -28,7 +32,10 @@ public class BubbleSortGame extends JFrame {
             ex.printStackTrace();
         }
     }
-
+    /*
+    *
+    * Generate aleatories numbers
+    * */
     private void generateNumbers() {
         numbers = new int[5][5];
         for (int i = 0; i < 5; i++) {
@@ -37,7 +44,10 @@ public class BubbleSortGame extends JFrame {
             }
         }
     }
-
+    /*
+     *
+     * Function that create a buttons
+     * */
     private void createButtons() {
         panel = new JPanel(new GridLayout(5, 5));
         buttons = new JButton[5][5];
@@ -59,13 +69,14 @@ public class BubbleSortGame extends JFrame {
         sortButton.addActionListener(new SortButtonListener());
         add(sortButton, BorderLayout.SOUTH);
     }
-
+    /*
+     *
+     * Function thats update text in the bottons latest change numbers
+     * */
     private void swapNumbers(int i, int j, int x, int y) {
         int temp = numbers[i][j];
         numbers[i][j] = numbers[x][y];
         numbers[x][y] = temp;
-
-        // Atualiza o texto nos botões após a troca dos números
         buttons[i][j].setText(Integer.toString(numbers[i][j]));
         buttons[x][y].setText(Integer.toString(numbers[x][y]));
     }
@@ -87,6 +98,11 @@ public class BubbleSortGame extends JFrame {
         }
     }
 
+    /*
+     *
+     * Bubble sort method in the matriz
+     * */
+
     private class SortButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -102,7 +118,7 @@ public class BubbleSortGame extends JFrame {
                             swapped = true;
 
                             try {
-                                Thread.sleep(500); // Delay for visualization purposes
+                                Thread.sleep(300); // Delay for visualization purposes
                             } catch (InterruptedException ex) {
                                 ex.printStackTrace();
                             }
